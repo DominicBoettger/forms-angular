@@ -1,5 +1,9 @@
 # forms-angular
 
+## 0.5
+* Added ui.router states
+* Added file uploader
+
 ## 0.2 to 0.3
 ### Summary
 * Improvements to routing:
