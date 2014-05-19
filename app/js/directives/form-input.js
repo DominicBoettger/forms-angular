@@ -134,6 +134,9 @@ function ($compile, $rootScope, utils, $filter, tele) {
                     case 'link' :
                         value = '<a ng-href="/' + tele.link('form', [fieldInfo.ref, fieldInfo.form, '{{' + modelString + '}}', 'edit']) + '">' + fieldInfo.linkText + '</a>';
                         break;
+                    case 'fileuploader':
+                        value = '<ng-upload-form url="/file/upload" auto-upload="true" size-limit="50000000000" name="'+fieldInfo.name+'"></ng-upload-form>';
+                        break;
                     case 'radio' :
                         value = '';
                         var separateLines = (options.formstyle !== 'inline' && !fieldInfo.inlineRadio);

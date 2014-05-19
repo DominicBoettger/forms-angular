@@ -12,6 +12,7 @@ var fng = angular.module( 'formsAngular'
     ,   'monospaced.elastic'
     ,   'ngCkeditor'
     ,   'guidelight.telepathic'
+    ,   'uploadModule'
 ]);
 
 fng.config(['teleProvider', function (teleProvider) {

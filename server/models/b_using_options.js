@@ -23,6 +23,12 @@ var BSchema = new Schema({
             type: 'url'
         }
     },
+    files: {
+        type: Schema.Types.Mixed,
+        form: {
+            type:'fileuploader'
+        }
+    },
     // secure prevents the data from being sent by the API, hidden from being shown on the default form
     login: {
         type: String,

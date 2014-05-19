@@ -4,9 +4,9 @@ var fng = angular.module('formsAngular');
 
 fng.controller( 'BaseCtrl',
 [                                                   // $data is a hacked up 'global' and must die
-    '$scope', '$routeParams', '$modal', '$filter', '$data', '$window', 'SubmissionsService', 'SchemasService', 'tele', '$log'
+    '$scope', '$routeParams', '$modal', '$filter', '$data', '$window', 'SubmissionsService', 'SchemasService', 'tele', '$log', 'fileUpload'
 ,
-function ($scope, $routeParams, $modal, $filter, $data, $window, SubmissionsService, SchemasService, tele, $log) {
+function ($scope, $routeParams, $modal, $filter, $data, $window, SubmissionsService, SchemasService, tele, $log, fileUpload) {
 
     var master = {};
     var fngInvalidRequired = 'fng-invalid-required';
@@ -19,6 +19,9 @@ function ($scope, $routeParams, $modal, $filter, $data, $window, SubmissionsServ
     // only used on list pages
     $scope.page_size = 20;
     $scope.pages_loaded = 0;
+
+    // file upload queue
+    $scope.filequeue = fileUpload.fieldData;
 
 
     // should be converted to an event instead of having form-input.js set up watches on this 'phase' thingy
@@ -335,6 +338,18 @@ function ($scope, $routeParams, $modal, $filter, $data, $window, SubmissionsServ
             if (formInstructions.step) {
                 formInstructions.add = 'step="' + formInstructions.step + '" ' + (formInstructions.add || '');
             }
+        } else if (mongooseOptions.form.type == 'fileuploader') {
+            if(mongooseOptions.form.name) {
+                $scope.$watchCollection('filequeue.'+mongooseOptions.form.name, function(newvar, oldvar) {
+                    $scope.record[mongooseOptions.form.name] = newvar;
+                });
+
+                $scope.$watchCollection('record.'+mongooseOptions.form.name, function(newvar, oldvar) {
+                    $scope.filequeue[mongooseOptions.form.name] = newvar;
+                });
+            }
+        }else if(mongooseType.instance == 'file') {
+            formInstructions.type = 'fileuploader';
         } else {
             throw new Error("Field " + formInstructions.name + " is of unsupported type " + mongooseType.instance);
         }
