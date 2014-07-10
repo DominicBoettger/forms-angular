@@ -5976,6 +5976,19 @@ form .form-inline > .sub-doc {
 .fixed-header {
   background-color: #ffffff;
 }
+.contenteditable {
+  padding: 10px;
+  border: 1px solid transparent;
+}
+.contenteditable:hover {
+  border: 1px solid #eee;
+}
+.cke_1 .cke_top {
+  background: transparent !important;
+}
+.cke_inner {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
 @media (max-width: 768px) {
   .page-body {
     padding-top: 0;

@@ -1,5 +1,5 @@
 // Twitter Bootstrap 3 version of forms-angular.less
-@import "forms-angular-bs-common.less";
+//@import "forms-angular-bs-common.less";
 //@import "../bower_components/select2-bootstrap-css/lib/select2-bootstrap.less";
 
 // Default styling for the forms-angular classes, to work with navbar-fixed
@@ -20,6 +20,24 @@
 
 .fixed-header {
   background-color: @body-bg;
+}
+
+.contenteditable {
+  padding: 10px;
+  border: 1px solid transparent;
+  outline: 0 none;
+}
+
+.contenteditable:hover {
+  border: 1px solid #eee;
+}
+
+.cke_1 .cke_top {
+  background: transparent !important;
+}
+
+.cke_inner {
+  background-color: rgba(0,0,0,0.5) !important;
 }
 
 @media (max-width: @grid-float-breakpoint) {

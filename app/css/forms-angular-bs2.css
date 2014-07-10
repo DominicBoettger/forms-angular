@@ -6626,6 +6626,11 @@ form .form-inline > .sub-doc {
 .search-results .search-result.focus {
   background-color: #005580;
 }
+
+.contenteditable {
+    border: 10px solid #000;
+}
+
 @media (max-width: 979px) {
   .global-search {
     padding-right: 1em;

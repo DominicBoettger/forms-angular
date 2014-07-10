@@ -225,11 +225,13 @@ formsAngular
                     common += 'rows = "' + fieldInfo.rows + '" ';
                   }
                 }
+                value = '<input ' + common + ' />';
                 if (fieldInfo.editor === 'ckEditor') {
                   common += 'ckeditor = "" ';
+
                   if (cssFrameworkService.framework() === 'bs3') { sizeClassBS3 = 'col-xs-12'; }
+                  value = '<div class="contenteditable" placeholder="'+fieldInfo.label+'" contenteditable="true"' + common + ' ></div>';
                 }
-                value = '<textarea ' + common + ' />';
               } else {
                 value = generateDefault(common, options, fieldInfo);
               }
@@ -658,6 +660,10 @@ formsAngular
               }
 
               $rootScope.$broadcast('formInputDone');
+              if(CKEDITOR) {
+                // Turn off automatic editor creation first.
+                CKEDITOR.disableAutoInline = true;
+              }
 
               if (scope.updateDataDependentDisplay && theRecord && Object.keys(theRecord).length > 0) {
                 // If this is not a test force the data dependent updates to the DOM

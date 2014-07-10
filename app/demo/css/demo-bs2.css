@@ -8682,3 +8682,20 @@ hr.soften {
     padding-bottom: 20px;
   }
 }
+
+.contenteditable {
+    padding: 10px;
+    border: 1px solid transparent;
+}
+
+.contenteditable:hover {
+    border: 1px solid #eee;
+}
+
+.cke_1 .cke_top {
+    background: transparent !important;
+}
+
+.cke_inner {
+    background-color: rgba(0,0,0,0.5) !important;
+}
